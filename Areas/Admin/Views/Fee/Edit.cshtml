@@ -1,0 +1,107 @@
+﻿@model KhoaHocOnline.Models.EF.Fee
+@{
+    ViewBag.Title = "Edit new Fee";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/Fee" class="nav-link">List</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/Fee/Edit" class="nav-link">Edit</a>
+        </li>
+    </ul>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Fee</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/admin/Fee">List</a></li>
+                    <li class="breadcrumb-item active">Edit</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Edit Fee</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="bs-stepper-content">
+                @using (Html.BeginForm("Edit", "Fee", FormMethod.Post, new { }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(x => x.FeeID)
+                    <!-- your steps content here -->
+                    <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                        <div class="form-group">
+                            <label for="InputStudentID">Student ID</label>
+                            @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @placeholder = "Student ID" })
+                            @Html.ValidationMessageFor(x => x.StudentID, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputCourseID">Course ID</label>
+                            @Html.TextAreaFor(x => x.CourseID, new { @class = "form-control", @placeholder = "Course ID" })
+                            @Html.ValidationMessageFor(x => x.CourseID, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputCost">Cost</label>
+                            @Html.TextBoxFor(x => x.Cost, new { @class = "form-control", @placeholder = "Cost" })
+                            @Html.ValidationMessageFor(x => x.Cost, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputStatus">Status</label>
+                            @Html.TextBoxFor(x => x.Status, new { @class = "form-control", @placeholder = "Status" })
+                            @Html.ValidationMessageFor(x => x.Status, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputIsChecked">Is Checked</label>
+                            @Html.TextBoxFor(x => x.IsChecked, new { @class = "form-control", @placeholder = "Is Checked" })
+                            @Html.ValidationMessageFor(x => x.IsChecked, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <a href="/admin/Fee" class="btn btn-danger">Previous</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->

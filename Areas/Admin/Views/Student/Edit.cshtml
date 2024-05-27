@@ -1,0 +1,107 @@
+﻿@model KhoaHocOnline.Models.EF.Student
+@{
+    ViewBag.Title = "Edit new Student";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/Student" class="nav-link">List</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/Student/Edit" class="nav-link">Edit</a>
+        </li>
+    </ul>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Student</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/admin/Student">List</a></li>
+                    <li class="breadcrumb-item active">Edit</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Edit Student</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="bs-stepper-content">
+                @using (Html.BeginForm("Edit", "Student", FormMethod.Post, new { }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(x => x.StudentID)
+                    <!-- your steps content here -->
+                    <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                        <div class="form-group">
+                            <label for="InputAccountID">Account ID</label>
+                            @Html.TextBoxFor(x => x.AccountID, new { @class = "form-control", @placeholder = "Account ID" })
+                            @Html.ValidationMessageFor(x => x.AccountID, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputFullName">Full Name</label>
+                            @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Full Name" })
+                            @Html.ValidationMessageFor(x => x.FullName, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputContactNumber">Contact Number</label>
+                            @Html.TextBoxFor(x => x.ContactNumber, new { @class = "form-control", @placeholder = "Contact Number" })
+                            @Html.ValidationMessageFor(x => x.ContactNumber, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputEmail">Email</label>
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputTotalMoney">TotalMoney</label>
+                            @Html.TextBoxFor(x => x.TotalMoney, new { @class = "form-control", @placeholder = "Total Money" })
+                            @Html.ValidationMessageFor(x => x.TotalMoney, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <a href="/admin/Student" class="btn btn-danger">Previous</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
